@@ -1,0 +1,187 @@
+::Q1)write a code for small astrology based on your life path number 
+::for that get date of birth from user then calculate life path number(use switch case)
+::calculation for life path number:
+	::a=date%10
+	::b=date/10
+	::c=a+b
+	
+	
+	::if life path number
+	::1.Lucky
+	::2.Carefully do your work
+	::3.Stronger
+	::4.Happy
+	::5.Can get help
+	::6.Doubt
+	::7.Sad
+	::8.Like
+	::9.Courage
+	::otherwise Invalid
+		
+[2021ict108@fedora ~]$ touch AstroQn.sh
+[2021ict108@fedora ~]$ chmod 777 AstroQn.sh
+[2021ict108@fedora ~]$ vi AstroQn.sh
+
+[2021ict108@fedora ~]$ ./AstroQn.sh
+
+Enter your birth date
+30
+Stronger
+
+::AstroQn.sh
+echo "Enter your birth date"
+read birthday
+a=$(($birthday%10))
+b=$(($birthday/10))
+c=$(($a+$b))
+
+case  $c in
+1)echo "Lucky";;
+2)echo "Carefully do your work";;
+3)echo "Stronger";;
+4)echo "Happy";;
+5)echo "Can get help";;
+6)echo "Doubt";;
+7)echo "Sad";;
+8)echo "Like";;
+9)echo "Courage";;
+*)echo "Invalid";;
+esac
+
+::Q2)for & while loop 
+:: syntax=>
+		::for variable in list
+			::do
+			:: commands
+			::done
+    ::syntax => while loop
+	:: while [ condition ]
+	::do 
+	::	commands
+	::done	
+::Q2)Give list of numbers then calculate the summation and multiplication using for loop
+ ::example:-
+ ::1 2 3 4 5
+ ::summation=15
+ ::multiplication=100
+ 
+[2021ict108@fedora ~]$ touch ForloopQn.sh
+[2021ict108@fedora ~]$ chmod 777 ForloopQn.sh
+[2021ict108@fedora ~]$ vi ForloopQn.sh
+[2021ict108@fedora ~]$ ./ForloopQn.sh
+
+sum is:  15
+multiplication is: 120
+
+::ForloopQn.sh
+
+numbers=(1 2 3 4 5)
+sum=0
+mul=1
+for number in "${numbers[@]}";
+do
+sum=$((sum+number))
+mul=$((mul*number))
+done
+
+echo "sum is: " $sum
+echo "multiplication is: "$mul
+
+[2021ict108@fedora ~]$ touch forloopuser.sh
+[2021ict108@fedora ~]$ chmod 777 forloopuser.sh
+[2021ict108@fedora ~]$ vi forloopuser.sh
+[2021ict108@fedora ~]$ ./forloopuser.sh
+
+Enter a list of numbers separated by spaces:
+1 2 3 4 5
+Summation :15
+Multiplication: 120
+
+
+::forloopuser.sh
+echo "Enter a list of numbers separated by spaces:"
+read -a numbers
+
+sum=0
+product=1
+
+for num in "${numbers[@]}";do
+sum=$((sum+num))
+product=$((product *num))
+done
+
+echo "Summation :$sum"
+echo "Multiplication: $product"
+
+::Q3)Print the integers from 1 to 10 using while loop
+::[2021ict108@fedora ~]$ vi whileloopQn.sh
+
+[2021ict108@fedora ~]$ ./whileloopQn.sh
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+::whileloopQn.sh
+
+number=1
+
+while [ $number -le 10 ]
+do
+echo $number
+number=$(($number+1))
+
+done
+
+::Q3)print the below pattern using nested loop 
+::columns=7,rows=7
+
+::nested loop syntax=>
+for((variable=0;variable<=input;variable++))
+do
+for((variable=0;variable<=input:variable++))
+do
+commands
+done 
+done
+
+
+::expected pattern
+i)
+*
+**
+***
+****
+*****
+******
+*******
+
+ii)
+*******
+******
+*****
+****
+***
+**
+*
+
+::pattern1.sh
+
+for((i=1;i<=7;i++))
+do
+for((j=0;j<i;j++))
+do
+echo -n "*"
+done
+echo ""
+done
+echo ""
+
+
+
