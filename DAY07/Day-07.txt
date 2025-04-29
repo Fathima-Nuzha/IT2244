@@ -1,0 +1,177 @@
+::01)Get the caldender and date
+
+[2021ict108@fedora ~]$ cal
+     April 2025
+Su Mo Tu We Th Fr Sa
+       1  2  3  4  5
+ 6  7  8  9 10 11 12
+13 14 15 16 17 18 19
+20 21 22 23 24 25 26
+27 28 29 30
+
+[2021ict108@fedora ~]$ date
+Fri Apr  4 01:24:02 PM +0530 2025
+
+
+::02)Get the student name and marks for the 3 subjects from user then calculate the total
+::output:-
+	::Enter the name:Isuru
+	::Enter the mark for subject1:80
+	::Enter the mark for subject2:90
+	::Enter the mark for subject3:70
+	
+	::Total=240
+	::Average=
+	
+[2021ict108@fedora ~]$ touch Question2.sh
+[2021ict108@fedora ~]$ vi program1.sh
+[2021ict108@fedora ~]$ vi Question2.sh
+[2021ict108@fedora ~]$ chmod 777 Question2.sh
+[2021ict108@fedora ~]$ ./Question2.sh
+Enter the name:
+Nuzha
+Enter the marks for subject1:
+80
+Enter the marks for subject2:
+30
+Nuzha
+Total: 110
+Average: 55
+
+::Question2.sh
+echo "Enter the name:"
+read name
+echo "Enter the marks for subject1:"
+read subject1
+echo "Enter the marks for subject2:"
+read subject2
+total=$(($subject1+$subject2))
+average=$(($total/2))
+echo $name
+echo "Total:" $total
+echo "Average:" $average
+
+
+	
+::03)Create calculator with arithmetic operation
+
+2021ict108@fedora ~]$ touch Question3.sh
+[2021ict108@fedora ~]$ chmod 777 Question3.sh
+[2021ict108@fedora ~]$ vi Question3.sh
+[2021ict108@fedora ~]$ ./Question3.sh
+Enter the first number:
+50
+Enter the second number:
+30
+Sum: 80
+Sub: 20
+Mult: 1500
+Div: 1
+
+::Question3.sh
+
+echo "Enter the first number:"
+read x
+echo "Enter the second number:"
+read y
+sum=$(($x+$y))
+sub=$(($x-$y))
+mul=$(($x*$y))
+div=$(($x/$y))
+echo "Sum:" $sum
+echo "Sub:" $sub
+echo "Mult:" $mul
+echo "Div:" $div
+
+
+::04)Get the days based on the user input number
+::output:-
+::Enter the number:5
+::Friday
+
+[2021ict108@fedora ~]$ touch Question4.sh
+[2021ict108@fedora ~]$ vi Question4.sh
+[2021ict108@fedora ~]$ vi Question4.sh
+[2021ict108@fedora ~]$ chmod 777 Question4.sh
+[2021ict108@fedora ~]$ ./Question4.sh
+Enter the number
+4
+Thursday
+[2021ict108@fedora ~]$ ./Question4.sh
+Enter the number
+10
+Invalid
+
+::Question4.sh
+echo "Enter the number"
+read number
+
+case $number in
+
+1)echo "Monday";;
+2)echo "Tuesday";;
+3)echo "WednesDay";;
+4)echo "Thursday";;
+5)echo "Friday";;
+6)echo "Saturday";;
+7)echo "Sunday";;
+*)echo "Invalid";;
+esac
+
+
+
+
+::05)Verify whether your user name is correct or not
+[2021ict108@fedora ~]$ vi Question5.sh
+[2021ict108@fedora ~]$ ./Question5.sh
+Enter your user name?
+Nuzha
+Correct
+[2021ict108@fedora ~]$ ./Question5.sh
+Enter your user name?
+hgfjdkhfd,
+Incorrect.Please try again.
+
+::Question5.sh
+name="Nuzha"
+echo "Enter your user name?"
+read username
+if [ "$name" == "$username" ]; then
+echo "Correct"
+else
+echo "Incorrect.Please try again."
+fi
+
+
+::06)Compare two numbers and print
+
+[2021ict108@fedora ~]$ touch Question6.sh
+[2021ict108@fedora ~]$ chmod 777 Question6.sh
+2021ict108@fedora ~]$ vi Question6.sh
+[2021ict108@fedora ~]$ ./Question6.sh
+Enter number 1?
+7
+Enter number 2?
+5
+7 is greater than 5
+
+::Question6.sh
+
+echo "Enter number 1?"
+read x
+echo "Enter number 2?"
+read y
+if [ "$x" -gt "$y" ]; then
+echo "$x is greater than $y"
+elif [ "$x" -lt "$y" ]; then
+echo "$x is less  than $y"
+else
+echo "Both numbers are equal."
+fi
+
+
+
+
+
+
+
