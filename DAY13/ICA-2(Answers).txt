@@ -1,0 +1,130 @@
+Operating Systems IT 2244
+Day 13 Practical
+15/05/2025(Election leave extra classes)
+
+1)
+cd %USERPROFILE%\desktop
+mkdir CSC2244
+mkdir Marks
+mkdir Exam
+
+cd CSC2244
+mkdir practical
+cd practical
+echo. >practical.txt
+echo. >practical.docx
+echo. >practical.pptx
+cd..
+
+
+mkdir theory
+cd theory
+echo. >theory.txt
+echo. >theory.docx
+echo. >theory.pptx
+cd..
+
+mkdir "exam papers"
+cd "exam papers"
+echo. >exampapers.txt
+echo. >exampapers.docx
+echo. >exampapers.pptx
+
+cd %USERPROFILE%\desktop
+echo. > Icae_Marks.xlsx
+echo. > Final_Exam_Marks.xlsx
+
+copy "%USERPROFILE%\Desktop\Icae_Marks.xlsx" "%USERPROFILE%\Desktop\Marks"
+copy "%USERPROFILE%\Desktop\Final_Exam_Marks.xlsx" "%USERPROFILE%\Desktop\Marks"
+
+xcopy "%USERPROFILE%\Desktop\Marks" "%USERPROFILE%\Desktop\Exam\"
+/E /I
+
+attrib +h "%USERPROFILE%\Desktop\Exam"
+
+================================================================================================
+
+2)
+
+Filter the rows where the GPA greater than 3.5 
+command:
+awk -F, 'NR==1 || $4 > 3.5' data.csv
+Output:
+[2021ict108@fedora ~]$ awk -F, 'NR==1 || $4 > 3.5' data.csv
+Name,Age,Department,GPA
+Priya,21,Environmentscience,3.7
+Carol,23,Physicalscience,3.99
+David,21,IT,3.98
+Riya,22,Physicalscience,3.6
+Rahman,21,Environmentscience,3.7
+Anna,23,Physicalscience,3.78
+Riyas,21,IT,3.76
+
+Explanation of command:
+awk -F, → Specifies that the field separator is a comma (,) since data.csv is a CSV file.
+'NR==1 || $4 > 3.5' → Filters the data based on two conditions:
+NR==1 → Includes the first row (header row) in the output.
+$4 > 3.5 → Includes rows where the fourth column has a value greater than 3.5.
+data.csv → The input file being processed.
+
+Calculate the average GPA of all Students.
+command:
+awk -F, 'NR>1 {sum+=$4; count++} END {if (count > 0) print "Average GPA:", sum/count}' data.csv
+Output:
+
+[2021ict108@fedora ~]$ awk -F, 'NR>1 {sum+=$4; count++} END {if (count > 0) print "Average GPA:", sum/count}' data.csv
+Average GPA: 3.511
+
+Explanation of Command:
+-F, → Specifies that the field separator is a comma (,) since the file is CSV.
+'NR>1 {sum+=$4; count++} → Processes rows after the first row (skips the header).
+sum+=$4 → Adds the fourth column values to sum.
+count++ → Increments count for each row processed.
+END {if (count > 0) print "Average GPA:", sum/count} → After reading all rows:
+Checks if count > 0 
+Prints "Average GPA:" followed by sum/count, which is the average of the fourth column.
+
+======================================================================================================================
+
+3.
+Read two Strings from user String 1 and String 2
+Count the characters of each String and print the lengthy String as shown in the Expected output
+
+command:
+echo "Enter String_1"
+read string1
+echo "Enter String_2"
+read string2
+
+strlength1=${#string1};
+strlength2=${#string2};
+
+if [ $strlength1 -gt $strlength2 ]; then
+echo "$string1 is larger than $string2"
+elif [ $strlength1 -eq $strlength2 ]; then
+echo "$string1 and $string2 are in equal length"
+else
+echo "$string2 is larger than $string1"
+fi
+
+Output:
+[2021ict108@fedora ~]$ ./strlengthcheck.sh
+Enter String_1
+apple
+Enter String_2
+banana
+banana is larger than apple
+
+Explanation of command:
+echo "Enter String_1" → Displays a prompt asking the user to enter the first string.
+read string1 → Reads user input and stores it in the variable string1.
+echo "Enter String_2" → Displays a prompt asking the user to enter the second string.
+read string2 → Reads user input and stores it in the variable string2.
+strlength1=${#string1}; → Calculates the length of string1 and stores it in strlength1.
+strlength2=${#string2}; → Calculates the length of string2 and stores it in strlength2.
+Conditional Statements:
+if [ $strlength1 -gt $strlength2 ]; then → Checks if string1 is longer than string2. 
+If true, it prints "string1 is larger than string2".
+elif [ $strlength1 -eq $strlength2 ]; then → Checks if both strings are equal in length. If true,
+it prints "string1 and string2 are in equal length".
+else → If neither condition is true, it prints "string2 is larger than string1".
